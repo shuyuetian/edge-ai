@@ -1,0 +1,72 @@
+name: static-checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  static-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install ShellCheck
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes shellcheck
+
+      - name: Python syntax
+        run: python -m compileall -q train scripts
+
+      - name: Script unit tests
+        run: python -m unittest discover -s scripts -p "test_*.py" -v
+
+      - name: Shell syntax
+        run: |
+          for file in packaging/arm64/*.sh; do
+            sh -n "$file"
+          done
+
+      - name: ShellCheck
+        run: shellcheck --shell=sh packaging/arm64/*.sh
+
+      - name: PowerShell syntax
+        shell: pwsh
+        run: |
+          $failed = $false
+          Get-ChildItem scripts -Filter "*.ps1" -File | ForEach-Object {
+              $tokens = $null
+              $parseErrors = $null
+              [System.Management.Automation.Language.Parser]::ParseFile(
+                  $_.FullName,
+                  [ref]$tokens,
+                  [ref]$parseErrors
+              ) | Out-Null
+              foreach ($parseError in $parseErrors) {
+                  Write-Error "$($_.Name): $($parseError.Message)"
+                  $failed = $true
+              }
+          }
+          if ($failed) {
+              exit 1
+          }
+
+      - name: Check derived data is not tracked
+        run: |
+          if git ls-files | grep -E '^train/artifacts/(calibration_npy|detector_fixture|ncnn_fixture)/'; then
+            echo "SKAB-derived data must not be committed" >&2
+            exit 1
+          fi
+
+      - name: Check committed whitespace
+        run: git show --check --format=fuller HEAD

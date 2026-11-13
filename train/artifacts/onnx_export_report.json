@@ -1,0 +1,26 @@
+{
+  "onnx_path": "/mnt/d/workspace/edge-ai/train/artifacts/anomaly_cnn.onnx",
+  "onnx_sha256": "9e4e9665a0d36b74169ce3ff08b5c4fce97b7c6e44c6a463e8686cc5baf0a9af",
+  "onnx_size_bytes": 36355,
+  "opset": 13,
+  "input_name": "sensor_window",
+  "input_shape": [
+    1,
+    8,
+    1,
+    60
+  ],
+  "output_name": "anomaly_logit",
+  "output_shape": [
+    1,
+    1
+  ],
+  "comparison_samples": 32,
+  "max_abs_error": 5.9604644775390625e-06,
+  "mean_abs_error": 1.8849968910217285e-06,
+  "error_limit": 0.0001,
+  "torch_version": "2.15.0+cpu",
+  "onnx_version": "1.23.2",
+  "onnxruntime_version": "1.31.1",
+  "threshold": 0.3870759606361389
+}

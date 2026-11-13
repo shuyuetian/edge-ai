@@ -1,0 +1,46 @@
+{
+  "seed": 42,
+  "best_epoch": 4,
+  "best_validation_loss": 0.7709625363349915,
+  "parameter_count": 8609,
+  "dataset_shapes": {
+    "train": [
+      3631,
+      60,
+      8
+    ],
+    "validation": [
+      542,
+      60,
+      8
+    ],
+    "test": [
+      481,
+      60,
+      8
+    ]
+  },
+  "validation": {
+    "threshold": 0.3870759606361389,
+    "precision": 0.603053,
+    "recall": 0.872928,
+    "f1": 0.713318,
+    "roc_auc": 0.841325,
+    "true_negative": 257,
+    "false_positive": 104,
+    "false_negative": 23,
+    "true_positive": 158
+  },
+  "test": {
+    "threshold": 0.3870759606361389,
+    "precision": 0.970149,
+    "recall": 0.734463,
+    "f1": 0.836013,
+    "roc_auc": 0.870818,
+    "true_negative": 300,
+    "false_positive": 4,
+    "false_negative": 47,
+    "true_positive": 130
+  },
+  "checkpoint": "/mnt/d/workspace/edge-ai/train/artifacts/anomaly_cnn.pt"
+}

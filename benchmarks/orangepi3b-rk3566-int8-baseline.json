@@ -1,0 +1,72 @@
+{
+  "run_id": "20261113_222845",
+  "source_archive": "board_results_20261113_222845.tar.gz",
+  "source_archive_sha256": "9a8c9b7958258368789b42514be8edad8c909065f27f207c80281330f644edd5",
+  "collection_date": "2026-11-13",
+  "host_arch": "aarch64",
+  "qemu": "not_used",
+  "iterations": 1000,
+  "warmup": 30,
+  "rounds": 5,
+  "verification": {
+    "samples": "481",
+    "window": "60 channels=8",
+    "threshold_probability": "0.387076",
+    "max_probability_error": "0.046102",
+    "decision_differences": "0",
+    "decision_agreement": "1.000000",
+    "f1_drop": "0.000000",
+    "expected_precision": "0.970149",
+    "actual_precision": "0.970149",
+    "expected_recall": "0.734463",
+    "actual_recall": "0.734463",
+    "expected_f1": "0.836013",
+    "actual_f1": "0.836013",
+    "invalid_shape_rejected": "true"
+  },
+  "environment_before": {
+    "board_model": "Rockchip RK3566 OPi 3B",
+    "os": "Orange Pi 1.0.8 Bookworm",
+    "uname": "Linux orangepi3b 5.10.160-rockchip-rk356x #1.0.8 SMP Mon Nov 18 11:49:28 CST 2024 aarch64 GNU/Linux",
+    "cpu_model": "Cortex-A55",
+    "memory_total": "3.8Gi",
+    "governors": [
+      "performance"
+    ],
+    "current_frequency_mhz": {
+      "min": 1800.0,
+      "max": 1800.0
+    },
+    "max_temperature_c": 39.444
+  },
+  "environment_after": {
+    "board_model": "Rockchip RK3566 OPi 3B",
+    "os": "Orange Pi 1.0.8 Bookworm",
+    "uname": "Linux orangepi3b 5.10.160-rockchip-rk356x #1.0.8 SMP Mon Nov 18 11:49:28 CST 2024 aarch64 GNU/Linux",
+    "cpu_model": "Cortex-A55",
+    "memory_total": "3.8Gi",
+    "governors": [
+      "performance"
+    ],
+    "current_frequency_mhz": {
+      "min": 1800.0,
+      "max": 1800.0
+    },
+    "max_temperature_c": 40.625
+  },
+  "checksum": 384.402130127,
+  "median_metrics": {
+    "mean_ms": 0.222374,
+    "p50_ms": 0.219042,
+    "p95_ms": 0.240042,
+    "p99_ms": 0.278541,
+    "min_ms": 0.215833,
+    "max_ms": 0.382667,
+    "peak_rss_kib": 4568.0
+  },
+  "notes": [
+    "运行前将 CPU0-CPU3 调频策略临时切换为 performance，测后恢复 ondemand。",
+    "测试期间散热风扇正常运行，SoC 温度从 39.444 摄氏度升至 40.625 摄氏度。",
+    "原始结果包及其五轮日志保存在本地 dist/；归档 SHA-256 已记录在本文件。"
+  ]
+}

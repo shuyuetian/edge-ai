@@ -1,0 +1,30 @@
+# 下载的公开数据集仅保存在本机，原始数据不纳入版本控制。
+data/
+
+# Codex 本地项目指令仅保留在当前工作区，不提交到公开仓库。
+/AGENTS.md
+
+# WSL 虚拟磁盘、Ubuntu 镜像和交换文件仅保存在本机。
+.wsl/
+
+# 可直接由审计与窗口脚本重新生成的数据文件。
+train/artifacts/*.npz
+train/artifacts/*.pt
+train/artifacts/*.onnx
+train/artifacts/*.param
+train/artifacts/*.bin
+train/artifacts/*.table
+train/artifacts/calibration_npy/
+train/artifacts/detector_fixture/
+train/artifacts/ncnn_fixture/
+build/
+
+# Python 缓存和字节码。
+__pycache__/
+*.py[cod]
+
+# ARM64 交付包由 scripts/build_stage6_package.ps1 重新生成。
+dist/
+
+# ncnn 源码固定到版本标签，按文档重新获取，不提交第三方源码历史。
+third_party/ncnn/
