@@ -3,6 +3,10 @@
 当前版本：**v1.0.0**。发布范围、真机数据和已知限制见
 [v1.0.0 发布说明](docs/RELEASE_NOTES_v1.0.0.md)。
 
+本仓库公开源码、文档、测试和经过审核的真机性能基线，不附带 SKAB 原始数据、
+模型二进制或包含派生测试夹具的 ARM64 交付包。文中出现的本地交付包 SHA-256
+用于标识已完成真机验证的构建，不代表 GitHub Release 提供该二进制附件。
+
 把公开设备时序数据上的轻量异常检测模型，从 PyTorch 训练一路部署到
 AArch64 Linux 的 C++/ncnn 推理程序，并记录可复现的精度、延迟和内存数据。
 
@@ -216,11 +220,13 @@ pwsh -NoProfile -ExecutionPolicy Bypass -File .\scripts\build_stage6_package.ps1
 4. 解压 tar 包，在 QEMU 中运行自动验收。
 5. 生成 `dist/edge-ai-arm64-stage6.tar.gz`。
 
-当前交付包 SHA-256：
+本机真机验证所用交付包 SHA-256：
 
 ```text
 a90a2a339d1cbdc35b136c55c54085331da240b0e53a2e6373c1f926ec8483ad
 ```
+
+该文件包含 SKAB 派生夹具，只保留为本地验收产物，不作为公开 Release 附件。
 
 ## Orange Pi 3B 验收
 
@@ -282,7 +288,7 @@ python scripts/compare_performance.py \
 
 - SKAB 数据来自公开水泵实验台，不写成真实工业现场。
 - SKAB 固定提交的许可证为 GPLv3；原始数据和派生夹具均不提交。
-- 交付包中的测试夹具仅用于本地验证，不作为公开数据包单独分发。
+- ARM64 交付包中的测试夹具仅用于本地验证，不作为公开 Release 附件。
 - 真机结果必须明确写 Orange Pi 3B、RK3566 和 CPU 推理，不能改写成 RK3568。
 - QEMU 数据只能标为模拟环境，不能与当前真机基线混写。
 - 当前没有 NPU 数据，不写“NPU 加速”或推测加速倍数。
